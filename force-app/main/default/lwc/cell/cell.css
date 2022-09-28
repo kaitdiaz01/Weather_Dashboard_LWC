@@ -4,13 +4,14 @@
 
 }
 
-.colorblack {
-    color:black;
-}
 
 .Yellow {
     color: #FCC003;
     font-weight: 500;
+}
+
+.colorblack {
+    color:black;
 }
 
 .radius {
