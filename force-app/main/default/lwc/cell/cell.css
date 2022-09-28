@@ -1,0 +1,40 @@
+.Red {
+    color: red;
+    font-weight: 500;
+
+}
+
+.colorblack {
+    color:black;
+}
+
+.Yellow {
+    color: #FCC003;
+    font-weight: 500;
+}
+
+.radius {
+    background-color: #45C65A;
+    color: white;
+    font-weight: 500;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    padding: 9px;
+    border: 3px;
+    text-align: center;
+    font: Arial, sans-serif;
+}
+
+.radiusyellow {
+    background-color: #FCC003;
+    color: white;
+    font-weight: 500;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    padding: 9px;
+    border: 3px;
+    text-align: center;
+    font: Arial, sans-serif;
+}

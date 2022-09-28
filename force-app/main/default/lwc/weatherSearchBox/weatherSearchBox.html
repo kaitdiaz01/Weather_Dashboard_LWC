@@ -1,0 +1,17 @@
+<template>
+    <div>
+        <lightning-input name="enter-search" placeholder="Enter a city" label="Search for a city" type="search"
+            onkeyup={cityChangeHandler}></lightning-input>
+    </div>
+
+    <template if:true={cityRefresh}>   
+        <c-forecast-weather city-input={childCityName} forecasts={forecasts} ></c-forecast-weather>
+    </template>
+   
+
+    <div class="slds-form-element buttons slds-text-align_left" style="padding: 5px; margin-top: 32px;">
+        <lightning-button style="float:center" label="Export Records" onclick={exportRecord} ></lightning-button>
+    </div>
+
+    
+</template>

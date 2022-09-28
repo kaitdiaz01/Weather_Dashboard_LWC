@@ -1,0 +1,48 @@
+<template>
+    <template if:true={isWeather}>
+        <lightning-card label="3-Day Weather Forecast" title="3-Day Weather Forecast" icon-name="standard:metrics">
+                <lightning-button class="slds-slds-m-right_x-small" slot="actions" label="Save Records" onclick={createNewRecord}></lightning-button>
+            <lightning-layout>
+                <lightning-layout-item size="12">
+                    <lightning-datatable key-field="id" data={forecastarray} columns={columns}>
+                    </lightning-datatable>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+    </template>
+
+</template>
+
+<!-- <template for:each={forecastarray} for:index='index' for:item="forecast">
+            <lightning-layout-item size="10" key={forecast.date} class="slds-col">
+            
+            <lightning-card style="padding: 10px;">
+    
+                    <lightning-layout-item padding="around-small" size="4" small-device-size="6" medium-device-size="6" large-device-size="6">
+                        <div>
+                            <div class="forecast slds-p-around_small slds-border_bottom slds-text-heading_medium">
+                                <lightning-formatted-date-time class="date" value={forecast.date}></lightning-formatted-date-time>
+                            </div>
+                            <div class="forecast slds-p-around_small">
+                                <span class="label slds-text-heading_small">Temp: </span>
+                                <lightning-formatted-number class="temp" value={forecast.temp}></lightning-formatted-number>°F 
+                            </div>
+                            <div class="forecast slds-p-around_small">
+                                <span class="label slds-text-heading_small">Wind: </span>
+                                <lightning-formatted-number class="wind" value={forecast.wind}></lightning-formatted-number> mph
+                            </div>
+                            <div class="forecast slds-p-around_small">
+                                
+                                <span class="label slds-text-
+                                heading_small">Humidity: </span>
+                                <lightning-formatted-number class="humidity" value={forecast.humidity}></lightning-formatted-number>%
+                            </div>
+                            <div class="slds-form-element buttons slds-text-align_center">
+                                <lightning-button style="float:center" data-id={index} label="Save Record" onclick={createNewRecord} ></lightning-button>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+
+            </lightning-card>
+            </lightning-layout-item>
+        </template> -->
