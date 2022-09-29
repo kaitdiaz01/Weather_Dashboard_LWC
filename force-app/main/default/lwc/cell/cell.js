@@ -121,36 +121,56 @@ export default class Cell extends NavigationMixin(LightningElement) {
         var parsedCell = JSON.parse(JSON.stringify(this.cellInfo));
         var parsedColorSetting = JSON.parse(JSON.stringify(this.getColorSetting));
         console.log('parsed color setting', parsedColorSetting);
-       
-        for (let i = 0; i < parsedColorSetting[0].cellColorSettings[i].condition.length; i++) {
 
-            switch (parsedColorSetting[0].cellColorSettings[i].condition) {
-                case 'greater than':
-                    if (parsedCell.data > parsedColorSetting[0].cellColorSettings[0].dataValue) {
-                        if (parsedColorSetting[0].fieldAPIName === 'Temperature__c') {
-                            // returns red
-                            return parsedColorSetting[0].cellColorSettings[0].color;
-                        }
-                        else {
-                            return 'colorblack'
-                        }
-                    }
-                    break;
-                case 'less than':
-                    if (parsedCell.data < parsedColorSetting[0].cellColorSettings[1].dataValue) {
-                        if (parsedColorSetting[0].fieldAPIName === "Temperature__c") {
-                            // returns yellow
-                            return parsedColorSetting[0].cellColorSettings[1].color;
-                        }
-                        else {
-                            return 'colorblack'
-                        }
-                    }
-                    break;
-                default:
-                    break;
+        // for (let i = 0; i < parsedColorSetting[0].cellColorSettings[i].condition.length; i++) {
+
+        //     switch (parsedColorSetting[0].cellColorSettings[i].condition) {
+        //         case 'greater than':
+        //             if (parsedCell.data > parsedColorSetting[0].cellColorSettings[0].dataValue && parsedColorSetting[0].fieldAPIName === parsedCell.fieldName) {  
+        //                     return parsedColorSetting[0].cellColorSettings[0].color;
+        //             } 
+        //             break;
+        //         case 'less than':
+        //             if (parsedCell.data < parsedColorSetting[0].cellColorSettings[1].dataValue && parsedColorSetting[0].fieldAPIName === parsedCell.fieldName) {
+        //                     // returns yellow
+        //                     return parsedColorSetting[0].cellColorSettings[1].color;
+        //                 }
+        //             break;
+        //             default: 'colorblack';
+        //             break;
+        //     }
+        // }
+
+
+        if (parsedColorSetting[0].cellColorSettings[0].condition === 'greater than' && parsedColorSetting[0].fieldAPIName === parsedCell.fieldName) {
+            if (parsedCell.data > parsedColorSetting[0].cellColorSettings[0].dataValue) {
+                // returns color red
+                return parsedColorSetting[0].cellColorSettings[0].color;
             }
         }
+
+        if (parsedColorSetting[0].cellColorSettings[1].condition === 'less than' && parsedColorSetting[0].fieldAPIName === parsedCell.fieldName) {
+            if (parsedCell.data < parsedColorSetting[0].cellColorSettings[1].dataValue) {
+                // return yellow
+                return parsedColorSetting[0].cellColorSettings[1].color;
+            }
+        }
+
+        if (parsedColorSetting[1].cellColorSettings[0].condition === 'greater than' && parsedColorSetting[1].fieldAPIName === parsedCell.fieldName) {
+            if (parsedCell.data > parsedColorSetting[1].cellColorSettings[0].dataValue) {
+                return parsedColorSetting[1].cellColorSettings[0].color;
+            }
+        }
+        if (parsedColorSetting[1].cellColorSettings[1].condition === 'less than' && parsedColorSetting[1].fieldAPIName === parsedCell.fieldName) {
+            if (parsedCell.data < parsedColorSetting[1].cellColorSettings[1].dataValue) {
+                return parsedColorSetting[1].cellColorSettings[1].color;
+            }
+        }
+        else {
+            return 'colorblack';
+        }
+
+
 
     };
 
@@ -172,6 +192,5 @@ export default class Cell extends NavigationMixin(LightningElement) {
     // return 'colorblack';
     // };
 
-
-
 }
+
