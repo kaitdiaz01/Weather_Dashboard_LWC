@@ -156,14 +156,14 @@ export default class Cell extends NavigationMixin(LightningElement) {
             }
         }
 
-        if (parsedColorSetting[1].cellColorSettings[0].condition === 'greater than' && parsedColorSetting[1].fieldAPIName === parsedCell.fieldName) {
-            if (parsedCell.data > parsedColorSetting[1].cellColorSettings[0].dataValue) {
-                return parsedColorSetting[1].cellColorSettings[0].color;
+        if (parsedColorSetting[2].cellColorSettings[0].condition === 'greater than' && parsedColorSetting[2].fieldAPIName === parsedCell.fieldName) {
+            if (parsedCell.data > parsedColorSetting[2].cellColorSettings[0].dataValue) {
+                return parsedColorSetting[2].cellColorSettings[0].color;
             }
         }
-        if (parsedColorSetting[1].cellColorSettings[1].condition === 'less than' && parsedColorSetting[1].fieldAPIName === parsedCell.fieldName) {
-            if (parsedCell.data < parsedColorSetting[1].cellColorSettings[1].dataValue) {
-                return parsedColorSetting[1].cellColorSettings[1].color;
+        if (parsedColorSetting[2].cellColorSettings[1].condition === 'less than' && parsedColorSetting[2].fieldAPIName === parsedCell.fieldName) {
+            if (parsedCell.data < parsedColorSetting[2].cellColorSettings[1].dataValue) {
+                return parsedColorSetting[2].cellColorSettings[1].color;
             }
         }
         else {
