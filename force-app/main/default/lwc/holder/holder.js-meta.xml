@@ -10,6 +10,8 @@
 
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage">
+            <!-- use property tag here to show a public property that can be set in Lighting App Builder -->
+            <!-- datasource is an attribute to show a picklist which keeps track of what choice the user chooses on admin side in Custom Metadata -->
             <property name="dtableObjects" type="String" datasource="apex://DataTablePicklist"/>
         </targetConfig> 
     </targetConfigs>

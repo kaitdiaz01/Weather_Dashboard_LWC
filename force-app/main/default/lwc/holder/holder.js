@@ -15,7 +15,10 @@ export default class Holder extends LightningElement {
     ]
     rows;
 
+
+
     @api dtableObjects;
+    // comes from the public property to keep track of choice admin selects -> used to get ID
 
     dataTableObjectSettings;
 
@@ -47,10 +50,12 @@ export default class Holder extends LightningElement {
     };
 
 
+    // this is called on connected callback to return the results from the CellColorSettingController 
     getObjectSettings(){
         getDataTableObjectSettings({ObjectSettingId: this.dtableObjects})
         .then(result => {
             this.dataTableObjectSettings = JSON.parse(result);
+            // set colorSetting variable to pass down to child datatable.js -> row.js -> cell.js (we want to go to cell.js to change colors)
             this.colorSetting = this.dataTableObjectSettings.columnSettings;
             console.log('datatableobjectsetting' , this.dataTableObjectSettings.columnSettings);
         }).catch(error => {

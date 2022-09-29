@@ -117,6 +117,7 @@ export default class Cell extends NavigationMixin(LightningElement) {
 
 
 
+    // this is in cell html 
     get cellColor() {
         var parsedCell = JSON.parse(JSON.stringify(this.cellInfo));
         var parsedColorSetting = JSON.parse(JSON.stringify(this.getColorSetting));
@@ -142,25 +143,30 @@ export default class Cell extends NavigationMixin(LightningElement) {
         // }
 
 
+        // setting temperature column here based of the array and making sure its equal to the fieldName 
         if (parsedColorSetting[0].cellColorSettings[0].condition === 'greater than' && parsedColorSetting[0].fieldAPIName === parsedCell.fieldName) {
             if (parsedCell.data > parsedColorSetting[0].cellColorSettings[0].dataValue) {
-                // returns color red
+                // returning whichever color is chosen from custom metadata and then in cell.css setting that class we return 
                 return parsedColorSetting[0].cellColorSettings[0].color;
             }
         }
 
+        // setting color for temp column again
         if (parsedColorSetting[0].cellColorSettings[1].condition === 'less than' && parsedColorSetting[0].fieldAPIName === parsedCell.fieldName) {
             if (parsedCell.data < parsedColorSetting[0].cellColorSettings[1].dataValue) {
-                // return yellow
+                
                 return parsedColorSetting[0].cellColorSettings[1].color;
             }
         }
 
+        // setting color for humidity column using same logic as above
         if (parsedColorSetting[2].cellColorSettings[0].condition === 'greater than' && parsedColorSetting[2].fieldAPIName === parsedCell.fieldName) {
             if (parsedCell.data > parsedColorSetting[2].cellColorSettings[0].dataValue) {
                 return parsedColorSetting[2].cellColorSettings[0].color;
             }
         }
+
+        // setting color for humidity for less than condition
         if (parsedColorSetting[2].cellColorSettings[1].condition === 'less than' && parsedColorSetting[2].fieldAPIName === parsedCell.fieldName) {
             if (parsedCell.data < parsedColorSetting[2].cellColorSettings[1].dataValue) {
                 return parsedColorSetting[2].cellColorSettings[1].color;
@@ -174,23 +180,6 @@ export default class Cell extends NavigationMixin(LightningElement) {
 
     };
 
-    // if (parsedCell.data > this.getColorSetting.cellColorSettings[0].dataValue && this.getColorSetting.fieldAPIName == 'Humidity__c') {
-    //     return this.getColorSetting.cellColorSettings[0].color;
-    // } 
-    // if (parsedCell.fieldName == 'Humidity__c' && parsedCell.data < 80) {
-    //     return 'coloryellow';
-    // }
-
-
-    // if (parsedCell.type === 'decimal' || parsedCell.type === 'double' && parsedCell.fieldName == 'Wind_MPH__c' && parsedCell.data < 5) {
-    //     return 'radius';
-    // } 
-    // if (parsedCell.type === 'decimal' || parsedCell.type === 'double' && parsedCell.fieldName == 'Wind_MPH__c' && parsedCell.data > 5) {
-    //     return 'radiusyellow';
-    // }
-    // else {
-    // return 'colorblack';
-    // };
 
 }
 
